@@ -13,6 +13,7 @@ rm
 cd
 echo
 make
+sh
 
 # Runtime Dependencies
 None!, Gxshl is statically linked, making it as lightweight and as portable as possible.

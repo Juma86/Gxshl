@@ -6,7 +6,7 @@ HEADER_DIRS  = $(dir $(shell find . | grep /Header/))
 LIB_DIRS     = $(dir $(shell find . -name '*.a') $(shell find . -name '*.so'))
 
 CC          := gcc
-CFLAGS       = `pkg-config --cflags $(INCLUDES)` -Wall -Wextra -pedantic -Werror $(HEADER_DIRS:%=-I%) -fno-stack-protector
+CFLAGS       = `pkg-config --cflags $(INCLUDES)` -Wall -Wextra -pedantic -Werror $(HEADER_DIRS:%=-I%) -fno-stack-protector -fno-builtin -std=c11 -s -Os
 
 LD          := ld
 LDFLAGS     ?= --entry=_start -lgxstl $(LIB_DIRS:%=-L%)
