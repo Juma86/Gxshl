@@ -1,0 +1,2 @@
+#!/bin/sh
+git clone --depth 1 https://github.com/Juma86/Gxstl.git
