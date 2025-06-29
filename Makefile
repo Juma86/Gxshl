@@ -5,11 +5,11 @@ INCLUDES    ?= .
 HEADER_DIRS  = $(dir $(shell find . | grep /Header/))
 LIB_DIRS     = $(dir $(shell find . -name '*.a') $(shell find . -name '*.so'))
 
-CC          := clang
-CFLAGS       = `pkg-config --cflags $(INCLUDES)` -Wall -Wextra -pedantic -Werror $(HEADER_DIRS:%=-I%)
+CC          := gcc
+CFLAGS       = `pkg-config --cflags $(INCLUDES)` -Wall -Wextra -pedantic -Werror $(HEADER_DIRS:%=-I%) -fno-stack-protector
 
 LD          := ld
-LDFLAGS     ?= --entry=_start -lgxstl $(LIB_DIRS:%=-L%) -z noexecstack
+LDFLAGS     ?= --entry=_start -lgxstl $(LIB_DIRS:%=-L%)
 
 SRC_DIR     := Source/
 OUT_DIR     := Bin/
