@@ -1,4 +1,5 @@
 #!/bin/sh
 git clone --depth 1 https://github.com/Juma86/Gxstl.git &
+# git clone --depth 1 https://git.musl-libc.org/git/musl  &
 
 wait

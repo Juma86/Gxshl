@@ -6,10 +6,10 @@ HEADER_DIRS  = $(dir $(shell find . | grep /Header/))
 LIB_DIRS     = $(dir $(shell find . -name '*.a') $(shell find . -name '*.so'))
 
 CC          := gcc
-CFLAGS       = `pkg-config --cflags $(INCLUDES)` -Wall -Wextra -pedantic -Werror $(HEADER_DIRS:%=-I%) -fno-stack-protector -fno-builtin -std=c11 -s -Os
+CFLAGS       = `pkg-config --cflags $(INCLUDES)` -Wall -Wextra -pedantic -Werror $(HEADER_DIRS:%=-I%) -fno-stack-protector -fno-builtin -std=c23 -s -Os
 
 LD          := ld
-LDFLAGS     ?= --entry=_start -lgxstl $(LIB_DIRS:%=-L%)
+LDFLAGS      = --entry=_start -lgxstl $(LIB_DIRS:%=-L%)
 
 SRC_DIR     := Source/
 OUT_DIR     := Bin/
@@ -22,8 +22,8 @@ POP_LIB     := populate-libs
 
 TARGET      := gxshl
 
-SRCS        := $(shell find $(SRC_DIR) -name '*.c')
-OBJS        := $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.c.o)
+SRCS         = $(shell find $(SRC_DIR) -name '*.c')
+OBJS         = $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.c.o)
 
 CPY         := cp -r
 MKD         := mkdir -p
